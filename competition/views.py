@@ -3,7 +3,7 @@ from django.views import generic
 from .models import Enter
 
 
-class EntriesList(genetic.ListView):
+class EntriesList(generic.ListView):
 
     model = Enter
     queryset = Enter.objects.filter(status=1).order_by('-created_on')
