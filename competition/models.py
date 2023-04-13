@@ -9,7 +9,8 @@ class Enter(models.Model):
 
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    competitor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='post_enter')
+    competitor = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='post_enter')
     updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
     featured_image = CloudinaryField('image', default='placeholder')
@@ -24,14 +25,15 @@ class Enter(models.Model):
 
     def __str__(self):
         return self.title
-    
+
     def number_of_likes(self):
         return self.likes.count()
 
 
 class Comment(models.Model):
 
-    post = models.ForeignKey(Enter, on_delete=models.CASCADE, related_name='comments')
+    post = models.ForeignKey(
+        Enter, on_delete=models.CASCADE, related_name='comments')
     name = models.CharField(max_length=80)
     email = models.EmailField()
     body = models.TextField()
@@ -41,5 +43,5 @@ class Comment(models.Model):
     class Meta:
         ordering = ['created_on']
 
-    def number_of_likes(self):
+    def __str__(self):
         return f'Comment {self.body} by {self.name}'
