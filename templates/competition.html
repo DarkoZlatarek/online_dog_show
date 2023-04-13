@@ -19,7 +19,7 @@
                                     <p class="competitor">By: {{ entry.competitor }}</p>
                                 </div>
                             </div>
-                            <a href="#" class="post-link">
+                            <a href="{% url 'entry_detail' entry.slug %}" class="post-link">
                                 <h2 class="card-title">{{ entry.title }}</h2>
                                 <p class="card-text">{{ entry.excerpt }}</p>
                             </a>

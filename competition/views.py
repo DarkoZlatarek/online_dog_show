@@ -28,11 +28,11 @@ class EntriesList(generic.ListView):
 class EntryDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
-        queryset = Entry.objects.filter(status=1)
+        queryset = Enter.objects.filter(status=1)
         entry = get_object_or_404(queryset, slug=slug)
         comments = entry.comments.filter(approved=True).order_by('created_on')
         liked = False
-        if entry.liked.filter(id=self.request.user.id).exists():
+        if entry.likes.filter(id=self.request.user.id).exists():
             liked = True
         
         return render(
