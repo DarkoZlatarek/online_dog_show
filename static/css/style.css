@@ -13,6 +13,17 @@
     color:rgb(245, 1, 1)
 }
 
+.btn-signup {
+    background-color: #23BBBB;
+    color: #fff;
+}
+
+.btn-signup:hover,
+.btn-signup:active {
+    background-color: #fff;
+    color: #23BBBB;
+}
+
 /* SOCIAL LINKS */
 .social-icons {
     text-align: center;
