@@ -1,21 +1,30 @@
-.logo-name {
-    text-decoration: none;
-    text-align: center;
-}
-
 .bg-image {
     background-image: url('../images/online-dog-show.jpg');
     width: 100%;
-    height: 600px;
+    height: 500px;
     background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
+    background-position: center top;
+    position: relative;
 }
+
+.navbar-brand {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.logo {
+    font-family: 'EB Garamond', serif;
+    font-size: 25px;
+    font-weight: 800;
+}
+
 
 .navbar-nav.ms-auto.fw-bolder li a{
     color: #000000;
-    font-family: 'Permanent Marker', cursive;
+    font-family: 'EB Garamond', serif;
     font-size: 1.5em;
+    font-weight: 800;
 }
 
 .navbar-nav.ms-auto.fw-bolder li a:hover{
