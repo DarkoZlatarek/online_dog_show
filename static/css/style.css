@@ -36,19 +36,6 @@
     color: #fff;
 }
 
-.outlined {
-    color: white;
-    text-shadow:
-        -1px -1px 0 #000,
-        0 -1px 0 #000,
-        1px -1px 0 #000,
-        1px 0 0 #000,
-        1px 1px 0 #000,
-        0 1px 0 #000,
-        -1px 1px 0 #000,
-        -1px 0 0 #000;
-  }
-
 .competitor {
     color: rgb(245, 1, 1);
     margin: 4px;
@@ -70,7 +57,7 @@
     color: #0d0058;
 }
 
-/* --------------------------------------------- login/signup form */
+/* --------------------------------------------- LOGIN/SIGNUP FORM */
 
 .login-form-container {
     margin-top: 20px;
@@ -83,6 +70,10 @@
     border-radius: 5px;
     padding: 30px;
     margin-bottom: 35px;
+}
+
+.signup-form {
+    justify-content: center;
 }
 
 .sign-up-btn {
