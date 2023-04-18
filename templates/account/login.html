@@ -6,21 +6,18 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
-<div class="container">
-  <div class="row">
-    <div class="col-md-5 mt-5 offset-md-4">
-
-      <h3>{% trans "Sign In" %}</h3>
-
-
-      <p>{% blocktrans %}If you have not created an account yet, then please
-        <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
-    
-    </div>
-  </div>
+<div class="container login-form-container">
 
   <div class="row">
-    <div class="col-md-5 mt-5 offset-md-4">  
+    <div class="col-md-4 mt-4 offset-md-4 login-form">
+      <div>
+
+        <h3>{% trans "Log In" %}</h3>
+  
+        <p>{% blocktrans %}Don't have an account yet? <br>Please click on
+          <a href="{{ signup_url }}" class="sign-up-btn"><strong>sign up</strong></a> to create one.{% endblocktrans %}</p>
+      
+      </div><br>
 
       <form class="login" method="POST" action="{% url 'account_login' %}">
         {% csrf_token %}
@@ -28,7 +25,8 @@
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
-        <button class="btn btn-signup right" type="submit">{% trans "Sign In" %}</button>
+        <br>
+        <button class="btn btn-signup right" type="submit"><i class="fa-solid fa-paw"></i> {% trans "Sign In" %}</button>
       </form>
     </div>
   </div>

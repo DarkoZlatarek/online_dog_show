@@ -60,17 +60,36 @@
 }
 
 .btn-signup {
-    background-color: #23BBBB;
-    color: #fff;
+    background-color: #0d0058;
+    color: #ef73bc;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: #23BBBB;
+    background-color: #ef73bc;
+    color: #0d0058;
 }
 
-/* SOCIAL LINKS */
+/* --------------------------------------------- login/signup form */
+
+.login-form-container {
+    margin-top: 20px;
+    font-family: 'Rowdies', serif;
+    text-align: center;
+}
+
+.login-form {
+    border: solid 2px #0d0058;
+    border-radius: 5px;
+    padding: 30px;
+    margin-bottom: 35px;
+}
+
+.sign-up-btn {
+    color: #0d0058;
+}
+
+/* ----------------------------------------------SOCIAL LINKS */
 .social-icons {
     text-align: center;
     font-size: 150%;
@@ -81,11 +100,11 @@
 }
 
 #social a{
-    color: #1A313C;
+    color: #0d0058;
 }
 
 #social a:hover {
-    color: #EFB542;
+    color: #ef73bc;
 }
 
 .footer-text {
