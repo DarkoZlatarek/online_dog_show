@@ -63,11 +63,11 @@
 
                             {% if user.is_authenticated %}
                             <li class="nav-item mx-auto bg-transparent fw-bolder">
-                                <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                                <a class="nav-link" href="{% url 'account_logout' %}">LogOut</a>
                             </li>
                             {% else %}
                             <li class="nav-item mx-auto bg-transparent fw-bolder">
-                                <a class="nav-link" href="{% url 'account_login' %}">Login/Signin</a>
+                                <a class="nav-link" href="{% url 'account_login' %}">LogIn/SignIn</a>
                             </li>
                             {% endif %}
                         </ul>
