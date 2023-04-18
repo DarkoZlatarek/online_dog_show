@@ -7,6 +7,10 @@
     position: relative;
 }
 
+.navbar {
+    --bs-navbar-color: #0d0058;
+}
+
 .navbar-brand {
     position: absolute;
     top: 15px;
@@ -26,14 +30,25 @@
 
 .navbar-nav.mx-auto.fw-bolder li a{
     color: #ef73bc;
-    font-family: 'EB Garamond', serif;
+    font-family: 'Rowdies', serif;
     font-size: 1.5em;
     font-weight: 800;
+    padding-left: 35px;
+    padding-right: 35px;
+    
 }
 
 .navbar-nav.mx-auto.fw-bolder li a:hover{
     text-decoration: none;
     color: #fff;
+}
+
+.navbar-toggler {
+    border: solid 3px #ef73bc;
+}
+
+.navbar-icon {
+    color: #ef73bc;
 }
 
 .competitor {
