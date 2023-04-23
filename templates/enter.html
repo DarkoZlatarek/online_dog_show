@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+{% load cloudinary %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 card mb-4  mt-3 ">
+            <div class="card-body">
+                {% if user.is_authenticated %}
+
+                    <h3>Enter the competition:</h3>
+
+                    <form method="POST" enctype="multipart/form-data">
+                        {{ enter_form | crispy }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                    </form>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
