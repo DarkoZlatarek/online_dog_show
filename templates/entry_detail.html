@@ -17,7 +17,7 @@
             </div>
             <div class="d-none d-md-block col-md-6 masthead-image">
                 <!-- The featured image URL goes in the src attribute -->
-                <img src="{{ entry.featured_image }}" width="100%">
+                <img src="{{ entry.featured_image.url }}" width="100%">
             </div>
         </div>
     </div>
@@ -101,7 +101,6 @@
         </div>
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
-                <!-- For later -->
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
                     Your comment is awaiting approval
@@ -111,7 +110,7 @@
                     {% if user.is_authenticated %}
                     <h3>Leave a comment:</h3>
                     <p>Posting as: {{ user.username }}</p>
-                    <form method="post">
+                    <form method="POST">
                         {{ comment_form | crispy }}
                         {% csrf_token %}
                         <button type="submit" class="btn btn-signup btn-lg">Submit</button>
