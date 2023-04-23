@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Enter
-from .forms import CommentForm
+from .forms import CommentForm, EnterForm
 
 
 def home_page(request):
@@ -17,6 +17,13 @@ def about_page(request):
     View for about page.
     """
     return render(request, 'about.html')
+
+
+def enter_page(request):
+    """
+    View for Enter page.
+    """
+    return render(request, 'enter.html')
 
 
 class EntriesList(generic.ListView):
@@ -92,3 +99,25 @@ class EntryLike(View):
             entry.likes.add(request.user)
         
         return HttpResponseRedirect(reverse('entry_detail', args=[slug]))
+
+
+def enter_submit(request):
+    """
+    View for Enter page.
+    """
+    if request.method == 'POST':
+        enter_form = EnterForm(request.POST, request.FILES)
+        if enter_form.is_valid():
+            enter_form.instance.competitor = request.user
+            enter_form.save()
+            return redirect('competition')
+        else:
+            enter_form = EnterForm()
+
+    return render(
+        request,
+        'enter.html',
+        {
+            'enter_form': EnterForm(),
+        },
+    )
