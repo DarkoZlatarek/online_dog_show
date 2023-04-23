@@ -7,4 +7,5 @@ urlpatterns = [
     path('about/', views.about_page, name='about'),
     path('competition/', views.EntriesList.as_view(), name='competition'),
     path('<slug:slug>/', views.EntryDetail.as_view(), name='entry_detail'),
+    path('like/<slug:slug>', views.EntryLike.as_view(), name='entry_like')
 ]
