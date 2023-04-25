@@ -121,3 +121,26 @@ def enter_submit(request):
             'enter_form': EnterForm(),
         },
     )
+
+
+def edit_entry(request, slug):
+
+    entry = get_object_or_404(Enter, slug=slug)
+
+    if request.method == 'POST':
+        edit_form = EnterForm(
+            request.POST, request.FILES, instance=entry)
+        if edit_form.is_valid():
+            entry = edit_form.save(commit=False)
+            entry.competitor = request.user
+            entry.save()
+            return redirect('competition')
+    else:
+        edit_form = EnterForm(instance=entry)
+
+    edit_form = EnterForm(request.POST or None, instance=entry)
+    context = {
+        'edit_form': edit_form,
+        'entry': entry
+    }
+    return render(request, 'edit_entry.html', context)
