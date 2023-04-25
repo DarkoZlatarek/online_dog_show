@@ -22,7 +22,7 @@
 
             {% if request.user == entry.competitor %}
                 <hr>
-                <a href="#">
+                <a href="{% url 'edit_entry' entry.slug %}">
                     <button>Edit</button>
                 </a>
             {% endif %}
