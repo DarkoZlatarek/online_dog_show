@@ -19,6 +19,13 @@
                 <!-- The featured image URL goes in the src attribute -->
                 <img src="{{ entry.featured_image.url }}" width="100%">
             </div>
+
+            {% if request.user == entry.competitor %}
+                <hr>
+                <a href="#">
+                    <button>Edit</button>
+                </a>
+            {% endif %}
         </div>
     </div>
 </div>
