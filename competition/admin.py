@@ -8,13 +8,9 @@ class EnterAdmin(SummernoteModelAdmin):
 
     prepopulated_fields = {'slug': ('title',)}
     list_filter = ('status', 'created_on')
-    list_display = ('title', 'slug', 'status', 'created_on', 'approved')
+    list_display = ('title', 'slug', 'status', 'created_on')
     search_fields = ['title', 'content']
     summernote_fields = ('content')
-    actions = ['approve_comments']
-
-    def approve_comments(self, request, queryset):
-        queryset.update(approved=True)
 
 
 @admin.register(Comment)
