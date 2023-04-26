@@ -144,3 +144,10 @@ def edit_entry(request, slug):
         'entry': entry
     }
     return render(request, 'edit_entry.html', context)
+
+
+def delete_entry(request, slug):
+
+    entry = get_object_or_404(Enter, slug=slug)
+    entry.delete()
+    return redirect('competition')
