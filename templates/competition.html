@@ -14,13 +14,13 @@
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <div class="card-body">
+                            <a href="{% url 'entry_detail' entry.slug %}" class="post-link">
                             <div class="image-container">
                                 <img class="card-img-top" src=" {{ entry.featured_image.url }}">
                                 <div class="image-flash">
                                     <p class="competitor">By: {{ entry.competitor }}</p>
                                 </div>
                             </div>
-                            <a href="{% url 'entry_detail' entry.slug %}" class="post-link">
                                 <h2 class="card-title">{{ entry.title }}</h2>
                                 <p class="card-text">{{ entry.excerpt }}</p>
                             </a>
