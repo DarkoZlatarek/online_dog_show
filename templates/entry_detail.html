@@ -25,6 +25,9 @@
                 <a href="{% url 'edit_entry' entry.slug %}">
                     <button>Edit</button>
                 </a>
+                <a href="{% url 'delete_entry' entry.slug %}">
+                    <button>Delete</button>
+                </a>
             {% endif %}
         </div>
     </div>
