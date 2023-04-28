@@ -7,7 +7,6 @@ class EnterForm(forms.ModelForm):
         model = Enter
         fields = (
             'title',
-            'slug',
             'content',
             'featured_image',
         )
