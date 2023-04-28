@@ -103,6 +103,12 @@
     color: #0d0058;
 }
 
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control-file {
+margin: auto;}
 
 /* ----------------------------------------------SOCIAL LINKS */
 .social-icons {
