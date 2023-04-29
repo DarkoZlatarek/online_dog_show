@@ -75,6 +75,10 @@
 
 /* --------------------------------------------- LOGIN/SIGNUP FORM */
 
+.container {
+    align-items: center;
+}
+
 .login-form-container {
     margin-top: 20px;
     font-family: 'Rowdies', serif;
@@ -107,8 +111,13 @@
     margin-bottom: 20px;
 }
 
-.form-control-file {
-margin: auto;}
+.card-body h3 {
+    color: #0d0058;
+}
+
+.card-body form {
+    text-align: left;
+}
 
 /* ----------------------------------------------SOCIAL LINKS */
 .social-icons {
@@ -152,5 +161,9 @@ margin: auto;}
     /* HEADER */
     .logo {
         font-size: 30px;
+    }
+
+    .col-sm-6 {
+        width: 90%;
     }
 }
