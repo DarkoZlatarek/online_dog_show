@@ -7,6 +7,12 @@
     position: relative;
 }
 
+hr {
+    height: 2px;
+    background-color: #0d0058;
+    border: none;
+}
+
 .navbar {
     --bs-navbar-color: #0d0058;
 }
@@ -71,6 +77,15 @@
 
 .card {
     --bs-card-border-color: #0d0058;
+}
+
+.user-box {
+    justify-content: center;
+}
+
+.user-box a {
+    text-decoration: none;
+    padding: 0px 10px 10px 10px;
 }
 
 /* --------------------------------------------- LOGIN/SIGNUP FORM */
