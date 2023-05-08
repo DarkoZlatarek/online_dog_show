@@ -1,3 +1,7 @@
+body {
+    font-family: 'Rowdies', serif;
+}
+
 .bg-image {
     background-image: url('../images/online-dog-show.jpg');
     width: 100%;
@@ -24,7 +28,6 @@ hr {
 }
 
 .logo {
-    font-family: 'Rowdies', serif;
     font-size: 45px;
     font-weight: 700;
     color: #0d0058;
@@ -36,7 +39,6 @@ hr {
 
 .navbar-nav.mx-auto.fw-bolder li a{
     color: #ef73bc;
-    font-family: 'Rowdies', serif;
     font-size: 1.5em;
     font-weight: 800;
     padding-left: 35px;
@@ -66,7 +68,6 @@ hr {
 
 .card-title, .card-text {
     color:#0d0058;
-    font-family: 'Rowdies', serif;
 }
 
 .card-img-top {
@@ -88,6 +89,27 @@ hr {
     padding: 0px 10px 10px 10px;
 }
 
+.button-adjusting {
+    border-color: #0d0058;
+    border-image: none;
+}
+
+.comment-bg {
+    background-color: #d2cdf1;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.name-relative {
+    position: relative;
+}
+.comment-time {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 10px;
+}
+
 /* --------------------------------------------- LOGIN/SIGNUP FORM */
 
 .container {
@@ -96,7 +118,6 @@ hr {
 
 .login-form-container {
     margin-top: 20px;
-    font-family: 'Rowdies', serif;
     text-align: center;
 }
 

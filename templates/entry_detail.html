@@ -6,125 +6,128 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="card col-md-6 mt-3">
-            <div>
-                <h1 class="card-title">
-                    {{ entry.title }}
-                </h1>
-                <p class="card-text"> {{ entry.competitor }} | {{ entry.created_on }}</p>
-            </div>
-            <div class="col">
-                <img src="{{ entry.featured_image.url }}" width="100%">
-            </div>
+            <div class="col-md-6 mt-3">
+                <div>
+                    <h1 class="card-title">
+                        {{ entry.title }}
+                    </h1>
+                    <p class="card-text"> {{ entry.competitor }} | {{ entry.created_on }}</p>
+                </div>
+                <div class="col">
+                    <img src="{{ entry.featured_image.url }}" width="100%">
+                </div>
 
-            {% if request.user == entry.competitor %}
-            <div>
-                <hr>
-                <div class="user-box d-flex justify-content-center">
-                    <a href="{% url 'edit_entry' entry.slug %}">
-                        <button class="btn btn-signup">Edit</button>
-                    </a>
-                    <a href="{% url 'delete_entry' entry.slug %}">
-                        <button class="btn btn-signup">Delete</button>
-                    </a>
+                {% if request.user == entry.competitor %}
+                <div>
+                    <hr>
+                    <div class="user-box d-flex justify-content-center">
+                        <a href="{% url 'edit_entry' entry.slug %}">
+                            <button class="btn btn-signup">Edit</button>
+                        </a>
+                        <a href="{% url 'delete_entry' entry.slug %}">
+                            <button class="btn btn-signup">Delete</button>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
             {% endif %}
         </div>
-    </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 mt-3">
+                <div class="card-body">
+                    <p class="card-text ">{{ entry.content | safe }}</p>
+                    <div class="row justify-content-center button-adjusting">
+                        <div class="col-3 ">
+                            <strong>
+                                {% if user.is_authenticated %}
+                                <form class="d-inline" action="{% url 'entry_like' entry.slug %}" method="POST">
+                                    {% csrf_token %}
 
-<div class="container">
-    <div class="row">
-        <div class="col card mb-4 mt-3 left top">
-            <div class="card-body">
-                <p class="card-text ">{{ entry.content | safe }}</p>
-                <div class="row">
-                    <div class="col-1">
-                        <strong>
-                            {% if user.is_authenticated %}
-                            <form class="d-inline" action="{% url 'entry_like' entry.slug %}" method="POST">
-                                {% csrf_token %}
+                                    {% if liked %}
 
-                                {% if liked %}
+                                    <button type="submit" name="entry_id" value="{{ entry.slug }}" class=""><i
+                                            class="fa-solid fa-heart"></i></button>
 
-                                <button type="submit" name="entry_id" value="{{ entry.slug }}" class="btn-like"><i
-                                        class="fas fa-heart"></i></button>
+                                    {% else %}
+
+                                    <button type="submit" name="entry_id" value="{{ entry.slug }}" class=""><i
+                                            class="fa-regular fa-heart"></i></button>
+
+                                    {% endif %}
+                                </form>
 
                                 {% else %}
 
-                                <button type="submit" name="entry_id" value="{{ entry.slug }}" class="btn-like"><i
-                                    class="far fa-heart"></i></button>
+                                <span class="align-middle"><i class="fa-regular fa-heart"></i></span>
 
                                 {% endif %}
-                            </form>
 
-                            {% else %}
-
-                            <span class="text-secondary"><i class="far fa-heart"></i></span>
-
-                            {% endif %}
-                            
-                            <span class="text-secondary">{{ entry.number_of_likes }}</span>
-                        </strong>
-                    </div>
-                    <div class="col-1">
-                        {% with comments.count as total_comments %}
-                        <strong class="text-secondary"><i class="far fa-comments"></i>
-                            {{ total_comments }}
-                        </strong>
-                        {% endwith %}
+                                <span class="align-middle">{{ entry.number_of_likes }}</span>
+                            </strong>
+                        </div>
+                        <div class="col-3">
+                            {% with comments.count as total_comments %}
+                            <strong class="align-middle"><i class="far fa-comments"></i>
+                                {{ total_comments }}
+                            </strong>
+                            {% endwith %}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <hr>
-        </div>
-    </div>
+
+    <hr>
 
     <!-- Comments section -->
 
-    <div class="row">
-        <div class="col-md-8 card mb-4  mt-3 ">
-            <h3>Comments:</h3>
-            <div class="card-body">
-                {% for comment in comments %}
-                <div class="comments" style="padding: 10px;">
-                    <p class="font-weight-bold">
-                        {{ comment.name }}
-                        <span class=" text-muted font-weight-normal">
-                            {{ comment.created_on }}
-                        </span> wrote:
-                    </p>
-                    {{ comment.body | linebreaks }}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 card mb-4 mt-3 ">
+                <h3 class="card-text">Comments:</h3>
+                <div class="card-body">
+                    {% for comment in comments %}
+                    <div class="card comment-bg">
+                        <p class="card-text name-relative">
+                            {{ comment.name }}
+                            <span class="comment-time">
+                                {{ comment.created_on }}
+                            </span>
+                        </p>
+                        <span class="text-muted">
+                        {{ comment.body | linebreaks }}
+                        </span>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="col-md-4 card mb-4 mt-3 ">
-            <div class="card-body">
-                {% if commented %}
-                <div class="alert alert-success" role="alert">
-                    Your comment is awaiting approval
-                </div>
-                {% else %}
 
-                    {% if user.is_authenticated %}
-                    <h3>Leave a comment:</h3>
-                    <p>Posting as: {{ user.username }}</p>
-                    <form method="POST">
-                        {{ comment_form | crispy }}
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-                    </form>
-                    {% endif %}
-                {% endif %}
+                <hr>
+
+                <div>
+                    <div class="card-body">
+                        {% if commented %}
+                        <div class="alert alert-success" role="alert">
+                            Your comment is awaiting approval
+                        </div>
+                        {% else %}
+    
+                        {% if user.is_authenticated %}
+                        <h3>Leave a comment:</h3>
+                        <p>Posting as: {{ user.username }}</p>
+                        <form method="POST">
+                            {{ comment_form | crispy }}
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                        </form>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+
             </div>
+
         </div>
     </div>
-</div>
 
 {% endblock %}
