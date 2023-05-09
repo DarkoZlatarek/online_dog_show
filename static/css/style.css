@@ -41,8 +41,7 @@ hr {
     color: #ef73bc;
     font-size: 1.5em;
     font-weight: 800;
-    padding-left: 35px;
-    padding-right: 35px;
+    padding-right: 45px;
     
 }
 
@@ -89,9 +88,14 @@ hr {
     padding: 0px 10px 10px 10px;
 }
 
-.button-adjusting {
-    border-color: #0d0058;
-    border-image: none;
+.button-like {
+    border: none;
+    color:#ff0000;
+    background-color: #fff;
+}
+
+.comment-fa i{
+    color: #0d0058;
 }
 
 .comment-bg {
@@ -109,6 +113,7 @@ hr {
     right: 0px;
     font-size: 10px;
 }
+
 
 /* --------------------------------------------- LOGIN/SIGNUP FORM */
 
@@ -180,26 +185,24 @@ hr {
 }
 
 @media screen and (max-width:1200px) {
-    /* HEADER */
     .logo {
         font-size: 35px;
     }
 }
 
 @media screen and (max-width:992px) {
-    /* HEADER */
     .logo {
         font-size: 30px;
     }
+
+    .col-md-6 {
+        width: 70%;
+    }
+    
 }
 
 @media screen and (max-width:768px){
-    /* HEADER */
     .logo {
         font-size: 30px;
-    }
-
-    .col-sm-6 {
-        width: 90%;
     }
 }

@@ -4,7 +4,7 @@
 
 {% load crispy_forms_tags %}
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-6 mt-3">
                 <div>
@@ -33,51 +33,54 @@
             {% endif %}
         </div>
         <div class="row justify-content-center">
-            <div class="col-md-6 mt-3">
+            <div class="col-md-8 mt-3">
+
                 <div class="card-body">
                     <p class="card-text ">{{ entry.content | safe }}</p>
-                    <div class="row justify-content-center button-adjusting">
-                        <div class="col-3 ">
-                            <strong>
+                </div>
+
+                    <div class="row justify-content-center mt-3">
+                            <div class="col-3">
+                            <strong class="offset-md-5">
                                 {% if user.is_authenticated %}
                                 <form class="d-inline" action="{% url 'entry_like' entry.slug %}" method="POST">
                                     {% csrf_token %}
 
                                     {% if liked %}
 
-                                    <button type="submit" name="entry_id" value="{{ entry.slug }}" class=""><i
-                                            class="fa-solid fa-heart"></i></button>
+                                    <button class="button-like" type="submit" name="entry_id" value="{{ entry.slug }}" class=""><i
+                                            class="fa-solid fa-heart fa-lg"></i></button>
 
                                     {% else %}
 
-                                    <button type="submit" name="entry_id" value="{{ entry.slug }}" class=""><i
-                                            class="fa-regular fa-heart"></i></button>
+                                    <button class="button-like" type="submit" name="entry_id" value="{{ entry.slug }}" class=""><i
+                                            class="fa-regular fa-heart fa-lg"></i></button>
 
                                     {% endif %}
                                 </form>
 
                                 {% else %}
 
-                                <span class="align-middle"><i class="fa-regular fa-heart"></i></span>
+                                <span class="button-like"><i class="fa-regular fa-heart fa-lg"></i></span>
 
                                 {% endif %}
 
-                                <span class="align-middle">{{ entry.number_of_likes }}</span>
+                                <span>{{ entry.number_of_likes }}</span>
                             </strong>
                         </div>
                         <div class="col-3">
                             {% with comments.count as total_comments %}
-                            <strong class="align-middle"><i class="far fa-comments"></i>
+                            <strong class="offset-md-4 comment-fa"><i class="far fa-comments fa-lg"></i>
                                 {{ total_comments }}
                             </strong>
                             {% endwith %}
                         </div>
                     </div>
-                </div>
+                
+
             </div>
         </div>
     </div>
-
     <hr>
 
     <!-- Comments section -->
@@ -102,8 +105,6 @@
                     {% endfor %}
                 </div>
 
-                <hr>
-
                 <div>
                     <div class="card-body">
                         {% if commented %}
@@ -113,6 +114,7 @@
                         {% else %}
     
                         {% if user.is_authenticated %}
+                        <hr>
                         <h3>Leave a comment:</h3>
                         <p>Posting as: {{ user.username }}</p>
                         <form method="POST">
