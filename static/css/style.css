@@ -61,7 +61,6 @@ hr {
 /* --------------------------------------------- COMPETITION CARDS */
 
 .competitor {
-    color: #ef73bc;
     margin: 4px;
 }
 
@@ -77,6 +76,14 @@ hr {
 
 .card {
     --bs-card-border-color: #0d0058;
+}
+
+.card-body a {
+    text-decoration: none;
+}
+
+.align-text {
+    text-align: center;
 }
 
 .user-box {
@@ -107,6 +114,7 @@ hr {
 .name-relative {
     position: relative;
 }
+
 .comment-time {
     position: absolute;
     top: 0px;
@@ -151,6 +159,7 @@ hr {
 .form-group {
     margin-bottom: 20px;
 }
+
 
 .card-body h3 {
     color: #0d0058;
