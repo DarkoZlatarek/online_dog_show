@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .forms import EnterForm
+from .forms import EnterForm, CommentForm
 
 
 class TestEnterForm(TestCase):
@@ -21,9 +21,18 @@ class TestEnterForm(TestCase):
         self.assertFalse(form.is_valid())
         self.assertIn('featured_image', form.errors.keys())
         self.assertEqual(
-            form.errors['featured_image'][0], 'This field is required.')
+            form.errors['featured_image'][0], 'No file selected!')
 
     def test_fields_are_explicit_in_form_metaclass(self):
         form = EnterForm()
         self.assertEqual(
-            form.Meta.fields, ['title', 'content', 'featured_image'])
+            form.Meta.fields, ('title', 'content', 'featured_image'))
+
+
+class TestCommentForm(TestCase):
+
+    def test_body_is_required(self):
+        form = CommentForm({'body': ''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('body', form.errors.keys())
+        self.assertEqual(form.errors['body'][0], 'This field is required.')
