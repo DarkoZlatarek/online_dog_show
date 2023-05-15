@@ -127,6 +127,11 @@ def enter_submit(request):
 def edit_entry(request, slug):
 
     entry = get_object_or_404(Enter, slug=slug)
+    edit_form = EnterForm(request.POST or None, instance=entry)
+    context = {
+        'edit_form': edit_form,
+        'entry': entry
+    }
 
     if request.method == 'POST':
         edit_form = EnterForm(
@@ -139,11 +144,6 @@ def edit_entry(request, slug):
     else:
         edit_form = EnterForm(instance=entry)
 
-    edit_form = EnterForm(request.POST or None, instance=entry)
-    context = {
-        'edit_form': edit_form,
-        'entry': entry
-    }
     return render(request, 'edit_entry.html', context)
 
 
