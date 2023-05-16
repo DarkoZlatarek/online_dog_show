@@ -7,21 +7,22 @@
 
 <div class="container login-form-container">
     <div class="row justify-content-center">
-            <div class="col-sm-6 mt-4 login-form">
-                <div class="card-body">
-                    {% if user.is_authenticated %}
+        <div class="col-sm-6 mt-4 login-form">
+            <div class="card-body">
+                {% if user.is_authenticated %}
 
-                        <h3>Enter the competition:</h3>
+                <h3>Enter the competition:</h3>
 
-                        <form method="POST" enctype="multipart/form-data">
-                            {{ enter_form | crispy }}
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-                        </form>
+                <form method="POST" enctype="multipart/form-data">
+                    {{ enter_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                    <div class="submit-disclaimer">* Your photo will have to be approved by admin before being published.</div>
+                </form>
 
-                    {% endif %}
-                </div>
+                {% endif %}
             </div>
+        </div>
     </div>
 </div>
 
