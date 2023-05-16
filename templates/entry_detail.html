@@ -20,13 +20,37 @@
                 {% if request.user == entry.competitor %}
                 <div>
                     <hr>
-                    <div class="user-box d-flex justify-content-center">
+                    <div class="modal-box d-flex justify-content-center">
                         <a href="{% url 'edit_entry' entry.slug %}">
                             <button class="btn btn-signup">Edit</button>
                         </a>
-                        <a href="{% url 'delete_entry' entry.slug %}">
-                            <button class="btn btn-signup">Delete</button>
-                        </a>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-signup btn-delete" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">
+                            Delete
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Are you sure you want to delete your entry?</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="button" class="btn btn-signup"
+                                            data-bs-dismiss="modal">Don't delete</button>
+                                        <a href="{% url 'delete_entry' entry.slug %}">
+                                            <button type="button" class="btn btn-secondary">Yes, delete!</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -86,13 +86,17 @@ hr {
     text-align: center;
 }
 
-.user-box {
-    justify-content: center;
+.submit-disclaimer {
+    font-size: 10px;
+    margin-top: 10px;
 }
 
-.user-box a {
-    text-decoration: none;
-    padding: 0px 10px 10px 10px;
+.modal-box a {
+    padding-right: 10px;
+}
+
+.modal-box button {
+    padding-left: 10px;
 }
 
 .button-like {
@@ -150,6 +154,10 @@ hr {
     color: #ef73bc;
 }
 
+.modal-btn-delete {
+    padding: 12px;
+}
+
 .btn-signup:hover,
 .btn-signup:active {
     background-color: #ef73bc;
@@ -192,6 +200,8 @@ hr {
     text-align: center;
 
 }
+
+/* ----------------------------------------------MEDIA SCREENS */
 
 @media screen and (max-width:1200px) {
     .logo {
