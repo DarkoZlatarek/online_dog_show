@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load cloudinary %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div>
+                        <img class="card-img-top" src=" {{ object.featured_image.url }}">
+                        <div>
+                            <p class="competitor text-muted">By: {{ object.competitor }}</p>
+                        </div>
+                    </div>
+                    <h2 class="card-title">{{ object.title }}</h2>
+                    <hr />
+                    <p class="card-text text-muted h6">{{ object.created_on}} <i class="far fa-heart"></i>
+                        {{ object.number_of_likes }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

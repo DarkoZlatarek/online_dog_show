@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.db.models import Count
 from .models import Enter
 from django.contrib import messages
 from .forms import CommentForm, EnterForm
@@ -33,6 +34,19 @@ class EntriesList(generic.ListView):
     queryset = Enter.objects.filter(status=1).order_by('-created_on')
     template_name = 'all_entries.html'
     paginate_by = 6
+
+
+class CurrentOrderList(generic.DetailView):
+    model = Enter
+    queryset = (
+        Enter.objects.filter(status=1)
+        .alias(nlikes=Count('likes'))
+        .order_by('-nlikes')
+    )
+    template_name = 'competition.html'
+
+    def get_object(self, *args, **kwargs):
+        return self.get_queryset().first()
 
 
 class EntryDetail(View):

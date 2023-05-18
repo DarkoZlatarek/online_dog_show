@@ -6,8 +6,6 @@
 
 <div class="container-fluid">
     <div class="row">
-
-        <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for entry in enter_list %}
@@ -15,7 +13,7 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <a href="{% url 'entry_detail' entry.slug %}">
-                            <div class="image-container">
+                            <div>
                                 <img class="card-img-top" src=" {{ entry.featured_image.url }}">
                                 <div>
                                     <p class="competitor text-muted">By: {{ entry.competitor }}</p>

@@ -61,6 +61,10 @@
                                 <a class="nav-link" href="{% url 'all_entries' %}">All Entries</a>
                             </li>
 
+                            <li class="nav-item mx-auto bg-transparent fw-bolder">
+                                <a class="nav-link" href="{% url 'competition' %}">Competition</a>
+                            </li>
+
                             {% if user.is_authenticated %}
                             <li class="nav-item mx-auto bg-transparent fw-bolder">
                                 <a class="nav-link" href="{% url 'account_logout' %}">LogOut</a>
