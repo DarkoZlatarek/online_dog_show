@@ -31,7 +31,7 @@ class EntriesList(generic.ListView):
 
     model = Enter
     queryset = Enter.objects.filter(status=1).order_by('-created_on')
-    template_name = 'competition.html'
+    template_name = 'all_entries.html'
     paginate_by = 6
 
 
@@ -111,7 +111,7 @@ def enter_submit(request):
         if enter_form.is_valid():
             enter_form.instance.competitor = request.user
             enter_form.save()
-            return redirect('competition')
+            return redirect('all_entries')
         else:
             enter_form = EnterForm()
 
@@ -140,7 +140,7 @@ def edit_entry(request, slug):
             entry = edit_form.save(commit=False)
             entry.competitor = request.user
             entry.save()
-            return redirect('competition')
+            return redirect('all_entries')
     else:
         edit_form = EnterForm(instance=entry)
 
@@ -151,4 +151,4 @@ def delete_entry(request, slug):
 
     entry = get_object_or_404(Enter, slug=slug)
     entry.delete()
-    return redirect('competition')
+    return redirect('all_entries')
