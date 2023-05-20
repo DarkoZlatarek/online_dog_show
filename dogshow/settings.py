@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['online-dog-show.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['online-dog-show.herokuapp.com', '8000-darkozlatar-onlinedogsh-nxj5tzg6pag.ws-eu97.gitpod.io', 'localhost']
 
 
 # Application definition
