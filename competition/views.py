@@ -14,11 +14,11 @@ def home_page(request):
     return render(request, 'index.html')
 
 
-def about_page(request):
+def rules_page(request):
     """
     View for about page.
     """
-    return render(request, 'about.html')
+    return render(request, 'rules.html')
 
 
 def enter_page(request):
