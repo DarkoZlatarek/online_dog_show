@@ -16,7 +16,7 @@ def home_page(request):
 
 def rules_page(request):
     """
-    View for about page.
+    View for rules page.
     """
     return render(request, 'rules.html')
 
@@ -29,14 +29,21 @@ def enter_page(request):
 
 
 class EntriesList(generic.ListView):
-
+    """
+    View for All Entries page.
+    """
     model = Enter
     queryset = Enter.objects.filter(status=1).order_by('-created_on')
     template_name = 'all_entries.html'
-    paginate_by = 6
+    paginate_by = 12
 
 
+# Class created using help from StackOverflow.
 class CurrentOrderList(generic.DetailView):
+    """
+    View for Competition page.
+    Lists entry with most liked at the top.
+    """
     model = Enter
     queryset = (
         Enter.objects.filter(status=1)
@@ -46,19 +53,30 @@ class CurrentOrderList(generic.DetailView):
     template_name = 'competition.html'
 
     def get_object(self, *args, **kwargs):
+        """
+        Show only entry with most likes.
+        """
         return self.get_queryset().first()
 
 
+# Class used from "I think therefore I blog" walkthrough.
 class EntryDetail(View):
-
+    """
+    Render the individual entry
+    to the browser.
+    """
     def get(self, request, slug, *args, **kwargs):
+        """
+        Create a new URL path for each blog post.
+        Create a comments section on the page.
+        """
         queryset = Enter.objects.filter(status=1)
         entry = get_object_or_404(queryset, slug=slug)
         comments = entry.comments.filter(approved=True).order_by('created_on')
         liked = False
         if entry.likes.filter(id=self.request.user.id).exists():
             liked = True
-        
+
         return render(
             request,
             'entry_detail.html',
@@ -70,15 +88,18 @@ class EntryDetail(View):
                 'comment_form': CommentForm()
             }
         )
-    
+
     def post(self, request, slug, *args, **kwargs):
+        """
+        Submit a new comment to an entry.
+        """
         queryset = Enter.objects.filter(status=1)
         entry = get_object_or_404(queryset, slug=slug)
         comments = entry.comments.filter(approved=True).order_by('created_on')
         liked = False
         if entry.likes.filter(id=self.request.user.id).exists():
             liked = True
-        
+
         comment_form = CommentForm(data=request.POST)
 
         if comment_form.is_valid():
@@ -89,7 +110,7 @@ class EntryDetail(View):
             comment.save()
         else:
             comment_form = CommentForm()
-        
+
         return render(
             request,
             'entry_detail.html',
@@ -103,19 +124,29 @@ class EntryDetail(View):
         )
 
 
+# Class used from "I think therefore I blog" walkthrough.
 class EntryLike(View):
-
+    """
+    Allow a user to like an entry
+    """
     def post(self, request, slug):
+        """
+        Check if user already liked the entry.
+        Allow like/unlike accordingly.
+        """
         entry = get_object_or_404(Enter, slug=slug)
 
         if entry.likes.filter(id=request.user.id).exists():
             entry.likes.remove(request.user)
         else:
             entry.likes.add(request.user)
-        
+
         return HttpResponseRedirect(reverse('entry_detail', args=[slug]))
 
 
+# Function built using instructions from "Hello Django",
+# "I think therefore I blog",
+# a previous generation fellow student - credited in README.
 def enter_submit(request):
     """
     View for Enter page.
@@ -139,7 +170,9 @@ def enter_submit(request):
 
 
 def edit_entry(request, slug):
-
+    """
+    Edit a submitted entry
+    """
     entry = get_object_or_404(Enter, slug=slug)
     edit_form = EnterForm(request.POST or None, instance=entry)
     context = {
@@ -161,8 +194,11 @@ def edit_entry(request, slug):
     return render(request, 'edit_entry.html', context)
 
 
+# Instructed by "Hello Django"
 def delete_entry(request, slug):
-
+    """
+    Delete a submitted entry
+    """
     entry = get_object_or_404(Enter, slug=slug)
     entry.delete()
     return redirect('all_entries')
