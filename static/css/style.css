@@ -58,6 +58,10 @@ hr {
     color: #ef73bc;
 }
 
+.pagination {
+    --bs-pagination-color: #0d0058;
+}
+
 /* --------------------------------------------- COMPETITION CARDS */
 
 .competitor {
