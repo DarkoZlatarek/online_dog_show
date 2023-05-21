@@ -5,7 +5,7 @@ from .forms import EnterForm, CommentForm
 # Test taken from "Hello Django"
 class TestEnterForm(TestCase):
     """
-    Tests for Eter form.
+    Tests for Enter form.
     """
     def test_title_is_required(self):
         """
