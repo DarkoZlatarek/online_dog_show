@@ -3,6 +3,9 @@ from django import forms
 
 
 class EnterForm(forms.ModelForm):
+    """
+    Entry submission form
+    """
     class Meta:
         model = Enter
         fields = (
@@ -13,6 +16,9 @@ class EnterForm(forms.ModelForm):
 
 
 class CommentForm(forms.ModelForm):
+    """
+    Comment submission form
+    """
     class Meta:
         model = Comment
         fields = ('body',)
