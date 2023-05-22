@@ -137,19 +137,19 @@ hr {
     align-items: center;
 }
 
-.login-form-container {
+.form-container {
     margin-top: 20px;
     text-align: center;
 }
 
-.login-form {
+.form {
     border: solid 2px #0d0058;
     border-radius: 5px;
     padding: 30px;
     margin-bottom: 35px;
 }
 
-.login-form form input {
+.form form input {
     max-width: 100%;
 }
 

@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['online-dog-show.herokuapp.com', '8000-darkozlatar-onlinedogsh-nxj5tzg6pag.ws-eu97.gitpod.io', 'localhost']
+ALLOWED_HOSTS = ['online-dog-show.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -104,8 +104,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'dogshow.wsgi.application'
 
 
-#Database
-#https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+# Database
+# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 # DATABASES = {
 #     'default': {
@@ -117,7 +117,6 @@ WSGI_APPLICATION = 'dogshow.wsgi.application'
 DATABASES = {
    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
-
 
 
 # Password validation
