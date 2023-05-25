@@ -21,6 +21,9 @@ Online dog show is a page where users can post the photo of their dog/s and see 
 * [Features](#features)
     * [Existing features](#existing-features)
     * [C.R.U.D.](#crud)
+    * [Future features](#future-features)
+* [Testing](#testing)
+
 
 <hr>
 
@@ -97,32 +100,173 @@ Not all stories have been implemented. Some have been left for future implementa
 
 12. I can **submit my dog photo** so that **I can be in the competition** *(story points: 2)*
 
-## Design
+<br>
 
-### Wireframe
-### Database schema
-### Color schema
-### Typography
-### Imagery
+## **Design**
 
-## Features
+### **Wireframe**
 
-### Existing features
-#### Home Page
-#### Nav bar
-##### Desktop
-##### Mobile
-#### Rules Page
-#### All Entries Page
-#### Entry Detail Page
-#### Competition Page
-#### Sign up, Log in and Log out
-##### Sign up
-##### Log in
-##### Log out
-#### Social Links
-### C.R.U.D.<span id="crud"><span>
-#### Create (button)
-#### Create (form)
-#### Read
-#### Update and delete
+**Home page:**<br>
+![Home page wireframe](static/images/readme-images/home-page-wireframe.png)
+
+<br>
+
+**Competition page:**<br>
+![Competition page wireframe](static/images/readme-images/competition-page-wireframe.png)
+
+<br>
+
+**Entry detail page:**<br>
+![Entry detail page wireframe](static/images/readme-images/entry-detail-page-wireframe.png)
+
+<br>
+
+**Site navigation:**<br>
+![Site navigation](static/images/readme-images/site-navigation.png)
+
+
+### **Database schema**<br>
+
+### **Color palette**<br>
+![Color palette](static/images/readme-images/color-palette.png)
+
+### **Typography**
+One font was used through the website. The font is from google fonts:
+* Rowdies
+
+### **Imagery**
+* Header photo is from [Unsplash](https://unsplash.com/photos/U6nlG0Y5sfs) posted there by [Hannah Lim](https://unsplash.com/@hannah15198)
+* Entry photos are from personal collection used for fictional users
+
+<br>
+
+## **Features**
+<hr>
+
+### **Existing features**
+
+**Home Page**<br>
+![Home page](static/images/readme-images/home-page.png)
+
+<br>
+
+**Navigation bar**<br>
+*Desktop:*<br>
+![Desktop navigation bar](static/images/readme-images/desktop-navbar.png)
+
+<br>
+
+*Mobile:*<br>
+![Mobile navigation bar](static/images/readme-images/mobile-navbar.png)
+
+<br>
+
+**Rules Page**<br>
+![Rules page](static/images/readme-images/rules-page.png)
+
+<br>
+
+**All Entries Page**<br>
+![Rules page](static/images/readme-images/all-entries-page.png)
+
+<br>
+
+**Entry Detail Page**<br>
+![Entry detail page](static/images/readme-images/entry-detail-page.png)
+
+<br>
+
+**Competition Page**<br>
+![Competition Page](static/images/readme-images/competition-page.png)
+
+<br>
+
+**Sign up, Log in and Log out**
+
+*Sign up*<br>
+![Sign up page](static/images/readme-images/sign-up-page.png)
+
+<br>
+
+*Log in*<br>
+![Log in page](static/images/readme-images/log-in-page.png)
+
+<br>
+
+*Log out*<br>
+![Log out page](static/images/readme-images/log-out-page.png)
+
+<br>
+
+**Social Links**<br>
+![Social Links](static/images/readme-images/social-links.png)
+
+<br>
+
+### **C.R.U.D.**<span id="crud"><span>
+**Create (button)**<br>
+* Enter button in navigation bar will bring user to a page with the form to submit their entry
+* Enter button is only visible to users that are signed in
+
+![Create for CRUD - button](static/images/readme-images/enter-button.png)
+
+<br>
+
+**Create (form)**<br>
+* Form is only accessible through <button>Enter</button> button
+
+![Create for CRUD - form](static/images/readme-images/enter-form.png)
+
+<br>
+
+**Read**<br>
+![Read for CRUD](static/images/readme-images/all-entries-page.png)
+
+<br>
+
+**Update and delete**<br>
+* The user who directly submitted the entry has an option to edit or delete their entry
+
+![Update and delete for CRUD](static/images/readme-images/edit-delete-buttons.png)
+
+<br>
+
+### **Future features**
+* Social media sign up
+* Filter option in All Entries page
+* Each user to have their own profile
+* Possibility to follow other users
+
+<hr>
+
+## **Testing**
+1. Navigation bar toggler button have additional border when clicked on:
+* fixed by adding css style -> .navbar {--bs-navbar-color: #0d0058;}
+
+<br>
+
+2. Photos not showing on the All Entries page or entry_detail page:
+* fixed:
+    * misspelled "entry" in {{ entry.featured_image.url }} in All entries template <br>
+    * forgot .url in {{ entry.featured_image.url }} in entry_detail page
+
+<br>
+
+3. Slug field not populating by itself when user makes a title input:
+ * fixed by importing slugify from django.utils.text and adding "save" method inside class Enter - done as per instruction from StackOverflow (credited in Credits section) (credit to: stackoverflow - https://stackoverflow.com/questions/50436658/how-to-auto-generate-slug-from-my-album-model-in-django-2-0-4)
+
+ <br>
+
+4. White space on the right side of the website:
+* fixed:
+    * footer was missing a parent div with class "container" to div with class "row"
+
+<br>
+
+5. Image required test failed:
+* fixed by changing error message from "This field is required." to "No file selected!" as per the error message in terminal
+
+<br>
+
+6. test_fields_are_explicit_in_form_metaclass faild:
+ - fixed by changing the square brackets to parenthesies
