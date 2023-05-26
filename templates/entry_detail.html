@@ -4,156 +4,154 @@
 
 {% load crispy_forms_tags %}
 
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-sm-6 mt-4 form">
-                <div class="card-body">
-                    <h1 class="card-title">
-                        {{ entry.title }}
-                    </h1>
-                    <p class="card-text"> {{ entry.competitor }} | {{ entry.created_on }}</p>
-                </div>
-                <div class="col">
-                    <img src="{{ entry.featured_image.url }}" width="100%">
-                </div>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-sm-6 mt-4 form">
+            <div class="card-body">
+                <h1 class="card-title">
+                    {{ entry.title }}
+                </h1>
+                <p class="card-text"> {{ entry.competitor }} | {{ entry.created_on }}</p>
+            </div>
+            <div class="col">
+                <img class="entry-detail-img-width" src="{{ entry.featured_image.url }}" alt="{{ entry.title }}">
+            </div>
 
-                {% if request.user == entry.competitor %}
-                <div>
-                    <hr>
-                    <div class="modal-box d-flex justify-content-center">
-                        <a href="{% url 'edit_entry' entry.slug %}">
-                            <button class="btn btn-signup">Edit</button>
-                        </a>
+            {% if request.user == entry.competitor %}
+            <div>
+                <hr>
+                <div class="modal-box d-flex justify-content-center">
+                    <a href="{% url 'edit_entry' entry.slug %}" class="btn btn-signup">Edit</a>
 
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-signup btn-delete" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop">
-                            Delete
-                        </button>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-signup btn-delete" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop">
+                        Delete
+                    </button>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Are you sure you want to delete your entry?</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-footer justify-content-center">
-                                        <button type="button" class="btn btn-signup"
-                                            data-bs-dismiss="modal">Don't delete</button>
-                                        <a href="{% url 'delete_entry' entry.slug %}">
-                                            <button type="button" class="btn btn-secondary">Yes, delete!</button>
-                                        </a>
-                                    </div>
+                    <!-- Modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Are you sure you want to delete
+                                        your entry?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-footer justify-content-center">
+                                    <button type="button" class="btn btn-signup" data-bs-dismiss="modal">Don't
+                                        delete</button>
+                                    <a href="{% url 'delete_entry' entry.slug %}" class="btn btn-secondary">Yes,
+                                        delete!</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            {% endif %}
         </div>
-        <div class="row justify-content-center">
-            <div class="col-md-8 mt-3">
-
-                <div class="card-body">
-                    <p class="card-text align-text">{{ entry.content | safe }}</p>
-                </div>
-
-                    <div class="row justify-content-center mt-3">
-                            <div class="col-3">
-                            <strong class="offset-md-5">
-                                {% if user.is_authenticated %}
-                                <form class="d-inline" action="{% url 'entry_like' entry.slug %}" method="POST">
-                                    {% csrf_token %}
-
-                                    {% if liked %}
-
-                                    <button class="button-like" type="submit" name="entry_id" value="{{ entry.slug }}" class=""><i
-                                            class="fa-solid fa-heart fa-lg"></i></button>
-
-                                    {% else %}
-
-                                    <button class="button-like" type="submit" name="entry_id" value="{{ entry.slug }}" class=""><i
-                                            class="fa-regular fa-heart fa-lg"></i></button>
-
-                                    {% endif %}
-                                </form>
-
-                                {% else %}
-
-                                <span class="button-like"><i class="fa-regular fa-heart fa-lg"></i></span>
-
-                                {% endif %}
-
-                                <span>{{ entry.number_of_likes }}</span>
-                            </strong>
-                        </div>
-                        <div class="col-3">
-                            {% with comments.count as total_comments %}
-                            <strong class="offset-md-4 comment-fa"><i class="far fa-comments fa-lg"></i>
-                                {{ total_comments }}
-                            </strong>
-                            {% endwith %}
-                        </div>
-                    </div>
-                
-
-            </div>
-        </div>
+        {% endif %}
     </div>
-    <hr>
+    <div class="row justify-content-center">
+        <div class="col-md-8 mt-3">
 
-    <!-- Comments section -->
+            <div class="card-body">
+                <p class="card-text align-text">{{ entry.content | safe }}</p>
+            </div>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8 card mb-4 mt-3 ">
-                <h3 class="card-text">Comments:</h3>
-                <div class="card-body">
-                    {% for comment in comments %}
-                    <div class="card comment-bg">
-                        <p class="card-text name-relative">
-                            {{ comment.name }}
-                            <span class="comment-time">
-                                {{ comment.created_on }}
-                            </span>
-                        </p>
-                        <span class="text-muted">
-                        {{ comment.body | linebreaks }}
-                        </span>
-                    </div>
-                    {% endfor %}
-                </div>
-
-                <div>
-                    <div class="card-body">
-                        {% if commented %}
-                        <div class="alert alert-success" role="alert">
-                            Your comment is awaiting approval
-                        </div>
-                        {% else %}
-    
+            <div class="row justify-content-center mt-3">
+                <div class="col-3">
+                    <div class="offset-md-5">
                         {% if user.is_authenticated %}
-                        <hr>
-                        <h3>Leave a comment:</h3>
-                        <p>Posting as: {{ user.username }}</p>
-                        <form method="POST">
-                            {{ comment_form | crispy }}
+                        <form class="d-inline" action="{% url 'entry_like' entry.slug %}" method="POST">
                             {% csrf_token %}
-                            <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+
+                            {% if liked %}
+
+                            <button class="button-like" type="submit" name="entry_id" value="{{ entry.slug }}"><i
+                                    class="fa-solid fa-heart fa-lg"></i></button>
+
+                            {% else %}
+
+                            <button class="button-like" type="submit" name="entry_id" value="{{ entry.slug }}"><i
+                                    class="fa-regular fa-heart fa-lg"></i></button>
+
+                            {% endif %}
                         </form>
+
+                        {% else %}
+
+                        <span class="button-like"><i class="fa-regular fa-heart fa-lg"></i></span>
+
                         {% endif %}
-                        {% endif %}
+
+                        <span>{{ entry.number_of_likes }}</span>
                     </div>
                 </div>
-
+                <div class="col-3">
+                    {% with comments.count as total_comments %}
+                    <strong class="offset-md-4 comment-fa"><i class="far fa-comments fa-lg"></i>
+                        {{ total_comments }}
+                    </strong>
+                    {% endwith %}
+                </div>
             </div>
+
 
         </div>
     </div>
+</div>
+<hr>
+
+<!-- Comments section -->
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 card mb-4 mt-3 ">
+            <h3 class="card-text">Comments:</h3>
+            <div class="card-body">
+                {% for comment in comments %}
+                <div class="card comment-bg">
+                    <p class="card-text name-relative">
+                        {{ comment.name }}
+                        <span class="comment-time">
+                            {{ comment.created_on }}
+                        </span>
+                    </p>
+                    <span class="text-muted">
+                        {{ comment.body | linebreaks }}
+                    </span>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div>
+                <div class="card-body">
+                    {% if commented %}
+                    <div class="alert alert-success" role="alert">
+                        Your comment is awaiting approval
+                    </div>
+                    {% else %}
+
+                    {% if user.is_authenticated %}
+                    <hr>
+                    <h3>Leave a comment:</h3>
+                    <p>Posting as: {{ user.username }}</p>
+                    <form method="POST">
+                        {{ comment_form | crispy }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                    </form>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
 
 {% endblock %}

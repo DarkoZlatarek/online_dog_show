@@ -86,6 +86,10 @@ hr {
     text-decoration: none;
 }
 
+.entry-detail-img-width {
+    width: 100%;
+}
+
 .align-text {
     text-align: center;
 }
@@ -160,6 +164,10 @@ hr {
 .btn-signup {
     background-color: #0d0058;
     color: #ef73bc;
+}
+
+.btn-delete {
+    margin-left: 24px;
 }
 
 .modal-btn-delete {

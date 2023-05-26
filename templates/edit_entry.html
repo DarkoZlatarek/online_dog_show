@@ -11,13 +11,13 @@
             <div class="card-body">
                 {% if user.is_authenticated %}
 
-                    <h3>Edit your entry:</h3>
+                <h3>Edit your entry:</h3>
 
-                    <form method="POST" enctype="multipart/form-data">
-                        {{ edit_form | crispy }}
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-signup btn-lg">Submit</button>
-                    </form>
+                <form method="POST" enctype="multipart/form-data">
+                    {{ edit_form | crispy }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-signup btn-lg">Submit</button>
+                </form>
 
                 {% endif %}
             </div>

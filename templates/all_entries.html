@@ -13,15 +13,16 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <a href="{% url 'entry_detail' entry.slug %}">
-                            <div>
-                                <img class="card-img-top" src=" {{ entry.featured_image.url }}">
                                 <div>
-                                    <p class="competitor text-muted">By: {{ entry.competitor }}</p>
+                                    <img class="card-img-top" src="{{ entry.featured_image.url }}"
+                                        alt="{{ entry.title }}">
+                                    <div>
+                                        <p class="competitor text-muted">By: {{ entry.competitor }}</p>
+                                    </div>
                                 </div>
-                            </div>
                                 <h2 class="card-title">{{ entry.title }}</h2>
                             </a>
-                            <hr />
+                            <hr>
                             <p class="card-text text-muted h6">{{ entry.created_on}} <i class="far fa-heart"></i>
                                 {{ entry.number_of_likes }}</p>
                         </div>
