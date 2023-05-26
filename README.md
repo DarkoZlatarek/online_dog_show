@@ -23,6 +23,12 @@ Online dog show is a page where users can post the photo of their dog/s and see 
     * [C.R.U.D.](#crud)
     * [Future features](#future-features)
 * [Testing](#testing)
+    * [Validator testing](#validator-testing)
+    * [Unfixed bugs](#unfixed-bugs)
+* [Technologies Used](#technologies-used)
+    * [Main Languages Used](#main-languages-used)
+    * [Frameworks, Libraries & Programs Used](#frameworks-used)
+    * [Installed Packages](#installed-packages)
 
 
 ## **User experience (UX)**<span id="user-experience"><span>
@@ -249,7 +255,7 @@ One font was used through the website. The font is from google fonts:
 <br>
 
 3. Slug field not populating by itself when user makes a title input:
- * fixed by importing slugify from django.utils.text and adding "save" method inside class Enter - done as per instruction from StackOverflow (credited in Credits section) (credit to: stackoverflow - https://stackoverflow.com/questions/50436658/how-to-auto-generate-slug-from-my-album-model-in-django-2-0-4)
+ * fixed by importing slugify from django.utils.text and adding "save" method inside class Enter - done as per instruction from StackOverflow (credited in Credits section)
 
  <br>
 
@@ -261,7 +267,6 @@ One font was used through the website. The font is from google fonts:
 
 5. Couldn't render most liked photo on the competition page:
 * fixed by the help of stackoverflow comunity who provided whole class that I used to achive that (credited in Credits section)
- https://stackoverflow.com/questions/76284389/django-queryset-first-not-rendering-on-html/76284404?noredirect=1#comment134522675_76284404
 
 <br>
 
@@ -276,11 +281,11 @@ One font was used through the website. The font is from google fonts:
 <br>
 
 8. Views testing: when checking the response status code to be 200, mine was 301:
-* fixed, with the help of previously asked and answered question on StackOverflow, by adding follow=True into the response (credited in Credits section) (https://stackoverflow.com/questions/21215035/django-test-always-returning-301)
+* fixed, with the help of previously asked and answered question on StackOverflow, by adding follow=True into the response (credited in Credits section)
 
 <br>
 
-### **Valiator testing**
+### **Validator testing**
 
 * Html files were passed through the [W3C validator](https://validator.w3.org/) and no html issues were found.
 
@@ -295,5 +300,54 @@ One font was used through the website. The font is from google fonts:
 * Python files (admin.py, forms.py, models.py, urls.py, views.py, test_forms.py and test_views.py) were passed through [PEP8CI](https://pep8ci.herokuapp.com/) and no issues were found.
 ![PEP8CI linter result](static/images/readme-images/pep8ci-linter.png)
 
+* All social links open to external pages as intended.
+
+### **Unfixed bugs**
+
+## **Technologies Used**
+
+### **Main Languages Used**
+
+* HTML5
+* CSS3
+* Javascript
+* Python
+* Django
+* ElephantSQL
+
+### **Frameworks, Libraries & Programs Used**<span id="frameworks-used"><span>
+
+* GitPod - to create my html files & styling sheet before pushing the project to Github
+* GitHub - to store my repository for submission
+* Google Fonts - for the font families
+* Font Awesome - to add icons to the social links in the footer element
+* Django
+* Bootstrap
+* icons8 - to provide the image for the icon in the tab bar
+* LucidChart - to create site navigation diagram
+
+### **Installed Packages**
+
+* 'django<4' gunicorn
+* dj_database_url psycopg2
+* dj3-cloudinary-storage
+* django-summernote
+* django-allauth
+* django-crispy-forms
+
+## **Deployment**
 
 
+## **Credits**
+
+* My wife - for the ability to calm me down when struggling with the code.
+
+* [CluelessBiker](https://github.com/CluelessBiker/project4-print-statements#deployment) - for readme template and code to make email field required in the sign up form
+
+* [Stackoverflow](https://stackoverflow.com/questions/50436658/how-to-auto-generate-slug-from-my-album-model-in-django-2-0-4) - for code to auto populate slug field
+
+* [Stacoverflow](https://stackoverflow.com/questions/21215035/django-test-always-returning-301) - to help with testing views code
+
+* [Stacoverflow](https://stackoverflow.com/questions/76284389/django-queryset-first-not-rendering-on-html/76284404?noredirect=1#comment134522675_76284404) - for class code to render most liked photo on the page
+
+* "I think therefore I blog" & "Hello Django" - Provided the initial steps for setting up & deploying the site. Credits have been added as comments where code was used.
