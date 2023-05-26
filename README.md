@@ -25,8 +25,6 @@ Online dog show is a page where users can post the photo of their dog/s and see 
 * [Testing](#testing)
 
 
-<hr>
-
 ## **User experience (UX)**<span id="user-experience"><span>
 <br>
 
@@ -57,7 +55,6 @@ For dog owners to share their best friends with others, even just over the photo
 * Users to be able to follow other users and see their posted photos
 * Ability to sign in with other social media accounts
 
-<hr>
 
 ## **User stories**
 Not all stories have been implemented. Some have been left for future implementations as the site grows and expands.
@@ -141,7 +138,6 @@ One font was used through the website. The font is from google fonts:
 <br>
 
 ## **Features**
-<hr>
 
 ### **Existing features**
 
@@ -237,9 +233,9 @@ One font was used through the website. The font is from google fonts:
 * Each user to have their own profile
 * Possibility to follow other users
 
-<hr>
 
 ## **Testing**
+
 1. Navigation bar toggler button have additional border when clicked on:
 * fixed by adding css style -> .navbar {--bs-navbar-color: #0d0058;}
 
@@ -263,10 +259,41 @@ One font was used through the website. The font is from google fonts:
 
 <br>
 
-5. Image required test failed:
+5. Couldn't render most liked photo on the competition page:
+* fixed by the help of stackoverflow comunity who provided whole class that I used to achive that (credited in Credits section)
+ https://stackoverflow.com/questions/76284389/django-queryset-first-not-rendering-on-html/76284404?noredirect=1#comment134522675_76284404
+
+<br>
+
+6. Form testing: Image required test failed:
 * fixed by changing error message from "This field is required." to "No file selected!" as per the error message in terminal
 
 <br>
 
-6. test_fields_are_explicit_in_form_metaclass faild:
- - fixed by changing the square brackets to parenthesies
+7. Form testing: test_fields_are_explicit_in_form_metaclass faild:
+* fixed by changing the square brackets into parenthesies
+
+<br>
+
+8. Views testing: when checking the response status code to be 200, mine was 301:
+* fixed, with the help of previously asked and answered question on StackOverflow, by adding follow=True into the response (credited in Credits section) (https://stackoverflow.com/questions/21215035/django-test-always-returning-301)
+
+<br>
+
+### **Valiator testing**
+
+* Html files were passed through the [W3C validator](https://validator.w3.org/) and no html issues were found.
+
+* Errors listed only reference {%%} & {{}} tags.
+
+* CSS files were passed through the [Jigsaw validator](https://jigsaw.w3.org/css-validator/) and no issues were found.
+![CSS Validator result](static/images/readme-images/css-validator.png)
+
+* Page has a 100 Accessibility rating in Lighthouse
+![Lighthouse rating](static/images/readme-images/lighthouse-rating.png)
+
+* Python files (admin.py, forms.py, models.py, urls.py, views.py, test_forms.py and test_views.py) were passed through [PEP8CI](https://pep8ci.herokuapp.com/) and no issues were found.
+![PEP8CI linter result](static/images/readme-images/pep8ci-linter.png)
+
+
+
