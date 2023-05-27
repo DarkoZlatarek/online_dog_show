@@ -337,6 +337,34 @@ One font was used through the website. The font is from google fonts:
 
 ## **Deployment**
 
+The site was deployed to Heroku and the steps done to do so are below:
+
+* Install Django & Gunicorn: ```pip3 install 'django<4' gunicorn```
+* Install supporting libraries: ```pip3 install dj_database_url==0.5.0 psycopg2```
+* Install Cloudinary: ```pip3 install dj3-cloudinary-storage```
+* Create the requirements.txt file: ```pip3 freeze --local > requirements.txt```
+* Creatre django project using: ```django-admin startproject dogshow .```
+* The competition app was then created: ```python3 manage.py startapp competition```
+* Add newly installed app to the settings.py file under INSTALLED_APPS
+* the changes were then migrated: ```python3 manage.py migrate```
+* On the [Heroku](https://dashboard.heroku.com/apps/online-dog-show/), new app was then created with the name "online-dog-show"
+* New database was then created with [ElephantSQL](https://customer.elephantsql.com/)
+* Back in our workspace, env.py file was created by making sure it is included in .gitignore file too
+* In env.py file, DATABASE_URL and SECRET_KEY environment variables were set
+* Django project was made aware of env.py file by modifying the settings.py
+* Database to be used was changed in settings.py file
+* Once again, changes were migrated: ```python manage.py migrate```
+* In the Heroku, under settings tab, config vars for DATABASE_URL, SECRET_KEY and PORT
+* Account for Cloudinary was created and it's API environment variable was added to the env.py file
+* Then new config var for cloudinary was set in our Heroku as well as DISABLE_COLLECTSTATIC=1
+* Cloudinary was added to INSTALLED_APPS in settings.py in our workspace
+* Code was written to tell Django to use cloudinary to store our media and static files
+* Then Code was written to tell Django where our templates will be stored
+* Heroku host name was added to ALLOWED_HOSTS in settings.py
+* templates and static folders were created
+* Procfile was created
+* Project was then deploy to Heroku through "deploy" tab using GitHub as deployment method
+
 
 ## **Credits**
 
