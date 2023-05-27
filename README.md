@@ -370,6 +370,8 @@ The site was deployed to Heroku and the steps done to do so are below:
 
 * My wife - for the ability to calm me down when struggling with the code.
 
+* "I think therefore I blog" & "Hello Django" - Provided the initial steps for setting up & deploying the site. Credits have been added as comments where code was used.
+
 * [CluelessBiker](https://github.com/CluelessBiker/project4-print-statements#deployment) - for readme template and code to make email field required in the sign up form
 
 * [Stackoverflow](https://stackoverflow.com/questions/50436658/how-to-auto-generate-slug-from-my-album-model-in-django-2-0-4) - for code to auto populate slug field
@@ -377,5 +379,3 @@ The site was deployed to Heroku and the steps done to do so are below:
 * [Stacoverflow](https://stackoverflow.com/questions/21215035/django-test-always-returning-301) - to help with testing views code
 
 * [Stacoverflow](https://stackoverflow.com/questions/76284389/django-queryset-first-not-rendering-on-html/76284404?noredirect=1#comment134522675_76284404) - for class code to render most liked photo on the page
-
-* "I think therefore I blog" & "Hello Django" - Provided the initial steps for setting up & deploying the site. Credits have been added as comments where code was used.
