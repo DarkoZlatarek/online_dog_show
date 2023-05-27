@@ -285,6 +285,11 @@ One font was used through the website. The font is from google fonts:
 
 <br>
 
+9. Background image in base.html not loading on deployed site:
+* fixed by loading the images directly into the HTML file instead of being set as background-image in CSS
+
+<br>
+
 ### **Validator testing**
 
 * Html files were passed through the [W3C validator](https://validator.w3.org/) and no html issues were found.
@@ -295,7 +300,8 @@ One font was used through the website. The font is from google fonts:
 ![CSS Validator result](static/images/readme-images/css-validator.png)
 
 * Page has a 100 Accessibility rating in Lighthouse
-![Lighthouse rating](static/images/readme-images/lighthouse-rating.png)
+<br>
+![Lighthouse rating](static/images/readme-images/lighthouse-report.png)
 
 * Python files (admin.py, forms.py, models.py, urls.py, views.py, test_forms.py and test_views.py) were passed through [PEP8CI](https://pep8ci.herokuapp.com/) and no issues were found.
 ![PEP8CI linter result](static/images/readme-images/pep8ci-linter.png)
