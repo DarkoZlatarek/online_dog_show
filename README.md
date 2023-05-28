@@ -1,6 +1,12 @@
 # [**Online Dog Show**](#online-dog-show)
 Online dog show is a page where users can post the photo of their dog/s and see other people's photos of dogs. Users can like other posts. Interacting with each other is possible through comments on their posts. There is a little harmless competition between users. The most liked photo is displayed on its own. There is no reward apart from ego boost.
 
+![Responsive site](static/images/readme-images/responsive-site.png)
+<br>
+
+The live link for "Online Dog Show" can be found [HERE](https://online-dog-show.herokuapp.com/)
+
+<br>
 
 ## [Table of content](#table-of-content)
 * [User experience](#user-experience)
@@ -129,6 +135,7 @@ Not all stories have been implemented. Some have been left for future implementa
 
 
 ### **Database schema**<br>
+![Database schema](static/images/readme-images/database-schema.png)
 
 ### **Color palette**<br>
 ![Color palette](static/images/readme-images/color-palette.png)
