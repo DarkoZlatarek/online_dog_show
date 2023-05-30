@@ -10,7 +10,7 @@ from django.utils.text import slugify
 STATUS = ((0, 'Draft'), (1, 'Published'))
 
 
-# Model used from "I think therefore I blog" walkthrough.
+# Model created with the help of "I think therefore I blog"
 class Enter(models.Model):
     """
     Database model for submitting an entry
@@ -21,7 +21,6 @@ class Enter(models.Model):
         max_length=200, unique=True, null=False, blank=False)
     competitor = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='post_enter')
-    updated_on = models.DateTimeField(auto_now=True)
     content = models.TextField()
     featured_image = CloudinaryField('image', null=False, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
