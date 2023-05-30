@@ -35,6 +35,9 @@ The live link for "Online Dog Show" can be found [HERE](https://online-dog-show.
     * [Main Languages Used](#main-languages-used)
     * [Frameworks, Libraries & Programs Used](#frameworks-used)
     * [Installed Packages](#installed-packages)
+* [Deployment](#deployment)
+* [Credits](#credits)
+
 
 
 ## **User experience (UX)**<span id="user-experience"><span>
@@ -392,3 +395,5 @@ The site was deployed to Heroku and the steps done to do so are below:
 * [Stacoverflow](https://stackoverflow.com/questions/21215035/django-test-always-returning-301) - to help with testing views code
 
 * [Stacoverflow](https://stackoverflow.com/questions/76284389/django-queryset-first-not-rendering-on-html/76284404?noredirect=1#comment134522675_76284404) - for class code to render most liked photo on the page
+
+* [Django: Customize 404 Error Page](https://levelup.gitconnected.com/django-customize-404-error-page-72c6b6277317) - customizes 404 error page created by following the steps on the website
