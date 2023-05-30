@@ -21,5 +21,6 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('', include('competition.urls'), name='competition_urls'),
     path('accounts/', include('allauth.urls')),
-
 ]
+
+handler404 = "dogshow.views.page_not_found_view"
